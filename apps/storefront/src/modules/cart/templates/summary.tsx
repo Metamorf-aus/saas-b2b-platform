@@ -40,7 +40,9 @@ const Summary = ({ customer, spendLimitExceeded }: SummaryProps) => {
     <Container className="flex flex-col gap-y-3">
       <CartTotals />
       <Divider />
+      {/* HIDDEN FOR DEMO — restore during Phase 0
       <PromotionCode cart={cart} />
+      */}
       <Divider className="my-6" />
       {spendLimitExceeded && (
         <div className="flex items-center gap-x-2 bg-neutral-100 p-3 rounded-md shadow-borders-base">
@@ -67,6 +69,7 @@ const Summary = ({ customer, spendLimitExceeded }: SummaryProps) => {
             : "Log in to Checkout"}
         </Button>
       </LocalizedClientLink>
+      {/* HIDDEN FOR DEMO — restore during Phase 0
       {!!customer && (
         <RequestQuoteConfirmation>
           <Button
@@ -89,6 +92,7 @@ const Summary = ({ customer, spendLimitExceeded }: SummaryProps) => {
           </Button>
         </RequestQuotePrompt>
       )}
+      */}
       <CartToCsvButton cart={cart} />
       <Button
         onClick={handleEmptyCart}

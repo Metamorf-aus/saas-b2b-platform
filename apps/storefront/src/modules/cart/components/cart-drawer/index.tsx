@@ -155,11 +155,13 @@ const CartDrawer = ({
               <ApprovalStatusBanner cart={cart} />
             </div>
           )}
+          {/* HIDDEN FOR DEMO — restore during Phase 0
           {promotions.length > 0 && (
             <div className="p-4">
               <AppliedPromotions promotions={promotions} />
             </div>
           )}
+          */}
           <div className="flex flex-col gap-y-4 h-full self-stretch justify-between overflow-auto">
             {cart && cart.items && (
               <>
@@ -169,6 +171,7 @@ const CartDrawer = ({
                   showTotal={false}
                 />
                 <div className="flex flex-col gap-y-3 w-full p-4">
+                  {/* HIDDEN FOR DEMO — restore during Phase 0
                   {cart && freeShippingPrices && (
                     <FreeShippingPriceNudge
                       variant="inline"
@@ -176,6 +179,7 @@ const CartDrawer = ({
                       freeShippingPrices={freeShippingPrices}
                     />
                   )}
+                  */}
                   <div className="flex justify-between">
                     <Text>Subtotal</Text>
                     <Text>

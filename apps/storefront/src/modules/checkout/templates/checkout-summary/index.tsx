@@ -18,7 +18,9 @@ const CheckoutSummary = async ({ cart }: { cart: B2BCart }) => {
       />
       <Divider className="my-2" />
       <CheckoutTotals cartOrOrder={cart} />
+      {/* HIDDEN FOR DEMO — restore during Phase 0
       <PromotionCode cart={cart} />
+      */}
       <Divider className="my-2" />
       <Review cart={cart} customer={customer} />
     </Container>

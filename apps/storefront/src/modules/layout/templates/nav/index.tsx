@@ -59,6 +59,7 @@ export async function NavigationHeader() {
               />
             </div>
 
+            {/* HIDDEN FOR DEMO — restore during Phase 0
             <div className="h-4 w-px bg-neutral-300" />
 
             {customer && cart?.items && cart.items.length > 0 ? (
@@ -79,6 +80,7 @@ export async function NavigationHeader() {
                 </button>
               </RequestQuotePrompt>
             )}
+            */}
 
             <Suspense fallback={<SkeletonAccountButton />}>
               <AccountButton customer={customer} />
