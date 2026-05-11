@@ -53,6 +53,7 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
 
       <Footer />
 
+      {/* HIDDEN FOR DEMO — restore during Phase 0
       {cart && freeShippingPrices && (
         <FreeShippingPriceNudge
           variant="popup"
@@ -60,6 +61,7 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
           freeShippingPrices={freeShippingPrices}
         />
       )}
+      */}
     </>
   )
 }

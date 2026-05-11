@@ -33,7 +33,7 @@ export const CompanyActionsMenu = ({
     mutateDelete(company.id, {
       onSuccess: () => {
         navigate("/companies");
-        toast.success(`Company ${company.name} deleted successfully`);
+        toast.success(`Department ${company.name} deleted successfully`);
       },
     });
   };

@@ -39,7 +39,7 @@ export function CompanyForm({
     <form>
       <Drawer.Body className="p-4">
         <div className="flex flex-col gap-2">
-          <Label size="xsmall">Company Name</Label>
+          <Label size="xsmall">Department Name</Label>
           <Input
             type="text"
             name="name"
@@ -47,7 +47,7 @@ export function CompanyForm({
             onChange={handleChange}
             placeholder="Medusa"
           />
-          <Label size="xsmall">Company Phone</Label>
+          <Label size="xsmall">Department Phone</Label>
           <Input
             type="text"
             name="phone"
@@ -55,7 +55,7 @@ export function CompanyForm({
             onChange={handleChange}
             placeholder="1234567890"
           />
-          <Label size="xsmall">Company Email</Label>
+          <Label size="xsmall">Department Email</Label>
           <Input
             type="email"
             name="email"
@@ -63,7 +63,7 @@ export function CompanyForm({
             onChange={handleChange}
             placeholder="medusa@medusa.com"
           />
-          <Label size="xsmall">Company Address</Label>
+          <Label size="xsmall">Department Address</Label>
           <Input
             type="text"
             name="address"
@@ -71,7 +71,7 @@ export function CompanyForm({
             onChange={handleChange}
             placeholder="1234 Main St"
           />
-          <Label size="xsmall">Company City</Label>
+          <Label size="xsmall">Department City</Label>
           <Input
             type="text"
             name="city"
@@ -79,7 +79,7 @@ export function CompanyForm({
             onChange={handleChange}
             placeholder="New York"
           />
-          <Label size="xsmall">Company State</Label>
+          <Label size="xsmall">Department State</Label>
           <Input
             type="text"
             name="state"
@@ -87,7 +87,7 @@ export function CompanyForm({
             onChange={handleChange}
             placeholder="NY"
           />
-          <Label size="xsmall">Company Zip</Label>
+          <Label size="xsmall">Department Zip</Label>
           <Input
             type="text"
             name="zip"
@@ -97,7 +97,7 @@ export function CompanyForm({
           />
           <div className="flex gap-4 w-full">
             <div className="flex flex-col gap-2 w-1/2">
-              <Label size="xsmall">Company Country</Label>
+              <Label size="xsmall">Department Country</Label>
               <Select
                 name="country"
                 value={formData.country || ""}
@@ -144,7 +144,7 @@ export function CompanyForm({
             </div>
           </div>
           {/* TODO: Add logo upload */}
-          <Label size="xsmall">Company Logo URL</Label>
+          <Label size="xsmall">Department Logo URL</Label>
           <Input
             type="text"
             name="logo_url"

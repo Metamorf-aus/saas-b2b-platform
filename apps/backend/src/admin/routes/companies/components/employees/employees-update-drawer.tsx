@@ -30,7 +30,7 @@ export function EmployeesUpdateDrawer({
       onSuccess: () => {
         setOpen(false);
         toast.success(
-          `Employee ${employee?.customer?.email} updated successfully`
+          `User ${employee?.customer?.email} updated successfully`
         );
       },
     });
@@ -40,7 +40,7 @@ export function EmployeesUpdateDrawer({
     <Drawer open={open} onOpenChange={setOpen}>
       <Drawer.Content className="z-50 overflow-auto">
         <Drawer.Header>
-          <Drawer.Title>Edit Employee</Drawer.Title>
+          <Drawer.Title>Edit User</Drawer.Title>
         </Drawer.Header>
 
         <EmployeesUpdateForm

@@ -25,11 +25,11 @@ const RemoveEmployeePrompt = ({ employee }: { employee: QueryEmployee }) => {
   const handleRemove = async () => {
     setIsRemoving(true)
     await deleteEmployee(employee.company_id, employee.id).catch(() => {
-      toast.error("Error deleting employee")
+      toast.error("Error deleting user")
     })
     setIsRemoving(false)
 
-    toast.success("Employee deleted")
+    toast.success("User deleted")
   }
 
   return (
@@ -39,11 +39,11 @@ const RemoveEmployeePrompt = ({ employee }: { employee: QueryEmployee }) => {
       </Prompt.Trigger>
       <Prompt.Content>
         <Prompt.Header>
-          <Prompt.Title>Remove Employee</Prompt.Title>
+          <Prompt.Title>Remove User</Prompt.Title>
           <Prompt.Description>
             Are you sure you want to remove{" "}
             <strong>{employee.customer.email}</strong> from your team? They will
-            no longer be able to purchase on behalf of your company.
+            no longer be able to purchase on behalf of your department.
           </Prompt.Description>
         </Prompt.Header>
         <Prompt.Footer>
@@ -92,13 +92,13 @@ const Employee = ({
 
     setIsSaving(true)
     await updateEmployee(updateData as StoreUpdateEmployee).catch(() => {
-      toast.error("Error updating employee")
+      toast.error("Error updating user")
     })
 
     setIsSaving(false)
     setIsEditing(false)
 
-    toast.success("Employee updated")
+    toast.success("User updated")
   }
 
   const spent = getOrderTotalInSpendWindow(orders, getSpendWindow(company)) || 0
@@ -183,7 +183,7 @@ const Employee = ({
         }}
       >
         <div className="flex flex-col gap-y-2">
-          <Text className=" text-neutral-950 font-medium">Spending Limit</Text>
+          <Text className=" text-neutral-950 font-medium">Quantity Limit</Text>
           <CurrencyInput
             symbol={currencySymbolMap[company.currency_code!]}
             code={company.currency_code!}
@@ -213,7 +213,7 @@ const Employee = ({
             }}
           >
             <option value="true">Admin</option>
-            <option value="false">Employee</option>
+            <option value="false">User</option>
           </NativeSelect>
         </div>
       </form>

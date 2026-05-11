@@ -26,7 +26,7 @@ export function CompanyCreateDrawer() {
       </Drawer.Trigger>
       <Drawer.Content>
         <Drawer.Header>
-          <Drawer.Title>Create Company</Drawer.Title>
+          <Drawer.Title>Create Department</Drawer.Title>
         </Drawer.Header>
         <CompanyForm
           handleSubmit={handleSubmit}

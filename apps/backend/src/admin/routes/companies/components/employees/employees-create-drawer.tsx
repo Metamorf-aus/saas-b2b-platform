@@ -46,13 +46,13 @@ export function EmployeeCreateDrawer({ company }: { company: QueryCompany }) {
     });
 
     if (!employee) {
-      toast.error("Failed to create employee");
+      toast.error("Failed to create user");
       return;
     }
 
     setOpen(false);
     toast.success(
-      `Employee ${customer?.first_name} ${customer?.last_name} created successfully`
+      `User ${customer?.first_name} ${customer?.last_name} created successfully`
     );
   };
 
@@ -68,7 +68,7 @@ export function EmployeeCreateDrawer({ company }: { company: QueryCompany }) {
       </Drawer.Trigger>
       <Drawer.Content>
         <Drawer.Header>
-          <Drawer.Title>Add Company Customer</Drawer.Title>
+          <Drawer.Title>Add Department Customer</Drawer.Title>
         </Drawer.Header>
         <EmployeesCreateForm
           handleSubmit={handleSubmit}

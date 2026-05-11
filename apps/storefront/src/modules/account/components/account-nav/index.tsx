@@ -72,7 +72,7 @@ const AccountNav = ({
                     <>
                       <div className="flex items-center gap-x-2">
                         <BuildingStorefront width={20} />
-                        <span>Company</span>
+                        <span>Department</span>
                       </div>
                       <ChevronDown className="transform -rotate-90" />
                     </>
@@ -121,6 +121,7 @@ const AccountNav = ({
                     </LocalizedClientLink>
                   </li>
                 )}
+                {/* HIDDEN FOR DEMO — restore during Phase 0
                 <li>
                   <LocalizedClientLink
                     href="/account/quotes"
@@ -134,6 +135,7 @@ const AccountNav = ({
                     <ChevronDown className="transform -rotate-90" />
                   </LocalizedClientLink>
                 </li>
+                */}
                 <li>
                   <button
                     type="button"
@@ -180,7 +182,7 @@ const AccountNav = ({
                 route={route!}
                 data-testid="company-link"
               >
-                Company
+                Department
               </AccountNavLink>
             </li>
             <li>
@@ -217,6 +219,7 @@ const AccountNav = ({
                 </AccountNavLink>
               </li>
             )}
+            {/* HIDDEN FOR DEMO — restore during Phase 0
             <li>
               <AccountNavLink
                 href="/account/quotes"
@@ -226,6 +229,7 @@ const AccountNav = ({
                 Quotes
               </AccountNavLink>
             </li>
+            */}
             <li className="text-neutral-400 hover:text-neutral-950">
               <button
                 type="button"

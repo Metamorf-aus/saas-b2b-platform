@@ -113,7 +113,7 @@ export function EmployeesCreateForm({
           <h2 className="h2-core">Permissions</h2>
           <div className="flex flex-col gap-2">
             <Label size="xsmall" className="txt-compact-small font-medium">
-              Spending Limit ({company.currency_code?.toUpperCase() || "USD"})
+              Quantity Limit ({company.currency_code?.toUpperCase() || "USD"})
             </Label>
             <CurrencyInput
               symbol={currencySymbolMap[company.currency_code || "USD"]}
