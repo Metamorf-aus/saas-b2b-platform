@@ -96,7 +96,7 @@ export function EmployeesUpdateForm({
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell className="font-medium font-sans txt-compact-small">
-                      Company
+                      Department
                     </Table.Cell>
                     <Table.Cell>{company.name}</Table.Cell>
                   </Table.Row>
@@ -108,7 +108,7 @@ export function EmployeesUpdateForm({
             <h2 className="h2-core">Permissions</h2>
             <div className="flex flex-col gap-2">
               <Label size="xsmall" className="txt-compact-small font-medium">
-                Spending Limit
+                Quantity Limit
               </Label>
               <CurrencyInput
                 symbol={currencySymbolMap[company.currency_code || "USD"]}

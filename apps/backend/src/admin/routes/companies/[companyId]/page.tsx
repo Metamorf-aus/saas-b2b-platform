@@ -30,7 +30,7 @@ const CompanyDetails = () => {
   const company = data?.company;
 
   if (!company) {
-    return <div>Company not found</div>;
+    return <div>Department not found</div>;
   }
 
   return (
@@ -145,7 +145,7 @@ const CompanyDetails = () => {
             <div className="flex items-center gap-2 px-6 py-4 justify-between border-b border-gray-200">
               <div className="flex items-center gap-2">
                 <Heading className="font-sans font-medium h1-core">
-                  Employees
+                  Users
                 </Heading>
               </div>
               <EmployeeCreateDrawer company={company} />
@@ -157,7 +157,7 @@ const CompanyDetails = () => {
                     <Table.HeaderCell></Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
                     <Table.HeaderCell>Email</Table.HeaderCell>
-                    <Table.HeaderCell>Spending Limit</Table.HeaderCell>
+                    <Table.HeaderCell>Quantity Limit</Table.HeaderCell>
                     <Table.HeaderCell>Actions</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>

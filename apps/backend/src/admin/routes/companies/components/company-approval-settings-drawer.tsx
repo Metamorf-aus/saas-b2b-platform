@@ -35,10 +35,10 @@ export function CompanyApprovalSettingsDrawer({
       {
         onSuccess: async () => {
           setOpen(false);
-          toast.success("Company approval settings updated successfully");
+          toast.success("Department approval settings updated successfully");
         },
         onError: (error) => {
-          toast.error("Failed to update company approval settings");
+          toast.error("Failed to update department approval settings");
         },
       }
     );
@@ -48,7 +48,7 @@ export function CompanyApprovalSettingsDrawer({
     <Drawer open={open} onOpenChange={setOpen}>
       <Drawer.Content className="z-50">
         <Drawer.Header>
-          <Drawer.Title>Company Approval Settings</Drawer.Title>
+          <Drawer.Title>Department Approval Settings</Drawer.Title>
         </Drawer.Header>
         <Drawer.Body className="flex flex-col gap-2">
           <div className="flex items-center gap-2">

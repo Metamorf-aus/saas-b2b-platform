@@ -21,7 +21,7 @@ export const EmployeesActionsMenu = ({
   const handleDelete = async () => {
     await mutateDelete(employee.id, {
       onSuccess: () => {
-        toast.success(`Employee deleted successfully`);
+        toast.success(`User deleted successfully`);
       },
     });
   };

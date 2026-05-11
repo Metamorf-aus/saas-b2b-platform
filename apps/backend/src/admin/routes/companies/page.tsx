@@ -25,7 +25,7 @@ const Companies = () => {
     <>
       <Container className="flex flex-col p-0 overflow-hidden">
         <div className="p-6 flex justify-between">
-          <Heading className="font-sans font-medium h1-core">Companies</Heading>
+          <Heading className="font-sans font-medium h1-core">Departments</Heading>
           <CompanyCreateDrawer />
         </div>
         {isPending && <Text>Loading...</Text>}
@@ -37,7 +37,7 @@ const Companies = () => {
               <Table.HeaderCell>Phone</Table.HeaderCell>
               <Table.HeaderCell>Email</Table.HeaderCell>
               <Table.HeaderCell>Address</Table.HeaderCell>
-              <Table.HeaderCell>Employees</Table.HeaderCell>
+              <Table.HeaderCell>Users</Table.HeaderCell>
               <Table.HeaderCell>Customer Group</Table.HeaderCell>
               <Table.HeaderCell>Actions</Table.HeaderCell>
             </Table.Row>
@@ -90,7 +90,7 @@ const Companies = () => {
 };
 
 export const config = defineRouteConfig({
-  label: "Companies",
+  label: "Departments",
   icon: BuildingStorefront,
 });
 

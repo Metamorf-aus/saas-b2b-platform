@@ -214,7 +214,7 @@ const QuoteDetails = () => {
 
             <div className="text-ui-fg-subtle grid grid-cols-2 items-start px-6 py-4">
               <Text size="small" weight="plus" leading="compact">
-                Spending Limit
+                Quantity Limit
               </Text>
 
               <Text size="small" leading="compact" className="text-pretty">
@@ -229,7 +229,7 @@ const QuoteDetails = () => {
 
           <Container className="divide-y p-0">
             <div className="flex items-center justify-between px-6 py-4">
-              <Heading level="h2">Company</Heading>
+              <Heading level="h2">Department</Heading>
             </div>
 
             <div className="text-ui-fg-subtle grid grid-cols-2 items-start px-6 py-4">
