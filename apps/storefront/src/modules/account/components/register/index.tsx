@@ -145,7 +145,7 @@ const Register = ({ setCurrentView, regions }: Props) => {
             onChange={handleChange}
           />
           <Input
-            label="Company name"
+            label="Department name"
             name="company_name"
             required
             autoComplete="organization"
@@ -166,7 +166,7 @@ const Register = ({ setCurrentView, regions }: Props) => {
             onChange={handleChange}
           />
           <Input
-            label="Company address"
+            label="Department address"
             name="company_address"
             required
             autoComplete="address"
@@ -176,7 +176,7 @@ const Register = ({ setCurrentView, regions }: Props) => {
             onChange={handleChange}
           />
           <Input
-            label="Company city"
+            label="Department city"
             name="company_city"
             required
             autoComplete="city"
@@ -186,7 +186,7 @@ const Register = ({ setCurrentView, regions }: Props) => {
             onChange={handleChange}
           />
           <Input
-            label="Company state"
+            label="Department state"
             name="company_state"
             autoComplete="state"
             data-testid="company-state-input"
@@ -195,7 +195,7 @@ const Register = ({ setCurrentView, regions }: Props) => {
             onChange={handleChange}
           />
           <Input
-            label="Company zip"
+            label="Department zip"
             name="company_zip"
             required
             autoComplete="postal-code"

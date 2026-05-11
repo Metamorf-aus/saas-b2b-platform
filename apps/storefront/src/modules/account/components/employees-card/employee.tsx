@@ -29,7 +29,7 @@ const RemoveEmployeePrompt = ({ employee }: { employee: QueryEmployee }) => {
     })
     setIsRemoving(false)
 
-    toast.success("Employee deleted")
+    toast.success("User deleted")
   }
 
   return (
@@ -39,7 +39,7 @@ const RemoveEmployeePrompt = ({ employee }: { employee: QueryEmployee }) => {
       </Prompt.Trigger>
       <Prompt.Content>
         <Prompt.Header>
-          <Prompt.Title>Remove Employee</Prompt.Title>
+          <Prompt.Title>Remove User</Prompt.Title>
           <Prompt.Description>
             Are you sure you want to remove{" "}
             <strong>{employee.customer.email}</strong> from your team? They will
@@ -98,7 +98,7 @@ const Employee = ({
     setIsSaving(false)
     setIsEditing(false)
 
-    toast.success("Employee updated")
+    toast.success("User updated")
   }
 
   const spent = getOrderTotalInSpendWindow(orders, getSpendWindow(company)) || 0
@@ -213,7 +213,7 @@ const Employee = ({
             }}
           >
             <option value="true">Admin</option>
-            <option value="false">Employee</option>
+            <option value="false">User</option>
           </NativeSelect>
         </div>
       </form>

@@ -47,7 +47,7 @@ const Review = ({
           <div className="flex items-center gap-x-2 bg-neutral-100 p-3 rounded-md shadow-borders-base">
             <ExclamationCircle className="text-orange-500 w-fit overflow-visible" />
             <p className="text-neutral-950 text-xs">
-              This order exceeds your spending limit.
+              This order exceeds your quantity limit.
               <br />
               Please contact your manager for approval.
             </p>

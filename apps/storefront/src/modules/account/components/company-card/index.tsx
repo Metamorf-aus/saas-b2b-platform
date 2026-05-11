@@ -35,7 +35,7 @@ const CompanyCard = ({
     setIsSaving(false)
     setIsEditing(false)
 
-    toast.success("Company updated")
+    toast.success("Department updated")
   }
 
   const currenciesInRegions = Array.from(
@@ -67,9 +67,9 @@ const CompanyCard = ({
           }}
         >
           <div className="flex flex-col gap-y-2">
-            <Text className="font-medium text-neutral-950">Company Name</Text>
+            <Text className="font-medium text-neutral-950">Department Name</Text>
             <Input
-              label="Company Name"
+              label="Department Name"
               name="name"
               value={companyData.name || ""}
               onChange={(e) =>
@@ -213,7 +213,7 @@ const CompanyCard = ({
           )}
         >
           <div className="flex flex-col gap-y-2">
-            <Text className="font-medium text-neutral-950">Company Name</Text>
+            <Text className="font-medium text-neutral-950">Department Name</Text>
             <Text className=" text-neutral-500">{company.name}</Text>
           </div>
           <div className="flex flex-col gap-y-2">
