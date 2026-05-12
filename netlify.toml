@@ -1,0 +1,11 @@
+[build]
+  base = "apps/storefront"
+  command = "cd ../.. && pnpm install --frozen-lockfile && pnpm --filter @b2b-starter/storefront build"
+  publish = "apps/storefront/.next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "9.15.0"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
