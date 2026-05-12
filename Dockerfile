@@ -14,10 +14,7 @@ RUN pnpm install --frozen-lockfile
 # Build the backend (medusa build → apps/backend/.medusa/server/)
 RUN pnpm --filter @b2b-starter/backend build
 
-# Install production deps inside the built artifact
-RUN cd apps/backend/.medusa/server && npm install --omit=dev
-
 EXPOSE 9000
 
-# Start from the built artifact directory
-CMD ["sh", "-c", "cd apps/backend/.medusa/server && npm start"]
+# Run via pnpm so the monorepo node_modules are used (avoids a second npm install)
+CMD ["sh", "-c", "cd apps/backend && pnpm start"]
