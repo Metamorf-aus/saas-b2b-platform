@@ -21,4 +21,4 @@ RUN cd apps/backend/.medusa/server && pnpm install --prod --no-lockfile
 EXPOSE 9000
 
 # Create admin user from env vars (silently skips if already exists), then start server
-CMD ["sh", "-c", "cd /app/apps/backend && (pnpm medusa user -e \"$MEDUSA_ADMIN_EMAIL\" -p \"$MEDUSA_ADMIN_PASSWORD\" || echo 'WARN: medusa user command failed') && cd /app/apps/backend/.medusa/server && npm start"]
+CMD ["sh", "-c", "cd /app/apps/backend && pnpm medusa exec ./src/migration-scripts/create-admin-user.ts && cd /app/apps/backend/.medusa/server && npm start"]
