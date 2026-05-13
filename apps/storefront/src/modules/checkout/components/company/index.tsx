@@ -1,5 +1,6 @@
 "use client"
 
+import CostCentreSelector from "@/modules/checkout/components/cost-centre-selector"
 import CompanyForm from "@/modules/checkout/components/company-form"
 import Divider from "@/modules/common/components/divider"
 import { B2BCart } from "@/types"
@@ -15,10 +16,11 @@ const Company = ({ cart }: { cart: B2BCart }) => {
           </Heading>
         </div>
         <Divider />
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-4">
           <form>
             <CompanyForm cart={cart} />
           </form>
+          <CostCentreSelector cart={cart} />
         </div>
       </div>
     </Container>

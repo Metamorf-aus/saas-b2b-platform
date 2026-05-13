@@ -1,3 +1,4 @@
+import { COST_CENTRES } from "@/modules/checkout/components/cost-centre-selector"
 import { HttpTypes } from "@medusajs/types"
 import { Heading, Text } from "@medusajs/ui"
 
@@ -7,6 +8,8 @@ type OrderDetailsProps = {
 
 const OrderDetails = ({ order }: OrderDetailsProps) => {
   const createdAt = new Date(order.created_at)
+  const costCentreCode = order.metadata?.cost_centre as string | undefined
+  const costCentre = COST_CENTRES.find((c) => c.code === costCentreCode)
 
   return (
     <>
@@ -28,6 +31,16 @@ const OrderDetails = ({ order }: OrderDetailsProps) => {
             {createdAt.getFullYear()}
           </Text>
         </div>
+
+        {costCentre && (
+          <div className="flex justify-between mb-2">
+            <Text>Cost Centre</Text>
+            <Text>
+              {costCentre.code} — {costCentre.name}
+              {costCentre.requires_approval ? " ⏳ Pending approval" : ""}
+            </Text>
+          </div>
+        )}
 
         <Text>
           We have sent the order confirmation details to{" "}
