@@ -48,7 +48,7 @@ const CompanyForm = ({ cart }: { cart: B2BCart }) => {
               data-testid="company-form-company-radio"
               disabled={isPendingApproval}
             />
-            <span>Order on behalf of {cart?.company.name}</span>
+            <span>Order on behalf of {cart?.company.name} department</span>
           </div>
         </RadioGroup.Option>
         <Divider />

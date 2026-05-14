@@ -24,7 +24,7 @@ export const useApprovalsTableColumns = () => {
         cell: ({ getValue }) => <DateCell date={getValue()} />,
       }),
       columnHelper.accessor("company.name", {
-        header: t("fields.company"),
+        header: t("Department"),
         cell: ({ getValue }) => <TextCell text={getValue()} />,
       }),
       columnHelper.accessor("metadata", {
