@@ -47,7 +47,7 @@ export default async function Orders() {
       )}
       <div>
         <Heading level="h2" className="text-neutral-700 mb-4">
-          Completed Orders
+          Orders
         </Heading>
 
         <OrderOverview orders={orders} />

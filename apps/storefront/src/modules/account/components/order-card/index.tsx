@@ -7,12 +7,21 @@ import { Button, clx, Container } from "@medusajs/ui"
 import Image from "next/image"
 import { useMemo } from "react"
 
+const FULFILLMENT_STATUS_LABEL: Record<string, { label: string; color: string }> = {
+  not_fulfilled: { label: "Processing", color: "text-orange-500" },
+  fulfilled:     { label: "Fulfillment created", color: "text-blue-500" },
+  shipped:       { label: "Shipped", color: "text-green-600" },
+  cancelled:     { label: "Cancelled", color: "text-red-500" },
+}
+
 type OrderCardProps = {
   order: HttpTypes.StoreOrder
 }
 
 const OrderCard = ({ order }: OrderCardProps) => {
   const createdAt = new Date(order.created_at)
+  const fulfillment = FULFILLMENT_STATUS_LABEL[order.fulfillment_status ?? "not_fulfilled"]
+    ?? { label: "Processing", color: "text-orange-500" }
   const numberOfLines = useMemo(() => {
     return (
       order.items?.reduce((acc, item) => {
@@ -78,6 +87,10 @@ const OrderCard = ({ order }: OrderCardProps) => {
           <div className="flex items-center text-small-regular">
             <DocumentIcon className="inline-block mr-1" />
             <span data-testid="order-display-id">#{order.display_id}</span>
+          </div>
+
+          <div className={clx("flex items-center text-small-regular font-medium", fulfillment.color)}>
+            {fulfillment.label}
           </div>
         </div>
 
