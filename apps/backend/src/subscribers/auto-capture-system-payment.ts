@@ -1,31 +1,43 @@
-import { type SubscriberArgs, type SubscriberConfig } from "@medusajs/medusa"
-import { IPaymentModuleService, IOrderModuleService } from "@medusajs/framework/types"
-import { ModuleRegistrationName } from "@medusajs/framework/utils"
+"use server"
 
-export default async function autoCapureSystemPayment({
+import { type SubscriberArgs, type SubscriberConfig } from "@medusajs/medusa"
+import { IPaymentModuleService } from "@medusajs/framework/types"
+import {
+  ContainerRegistrationKeys,
+  ModuleRegistrationName,
+} from "@medusajs/framework/utils"
+
+export default async function autoCaptureSystemPayment({
   event,
   container,
 }: SubscriberArgs<{ id: string }>) {
   const orderId = event.data.id
 
-  const orderService: IOrderModuleService = container.resolve(
-    ModuleRegistrationName.ORDER
-  )
+  const query = container.resolve(ContainerRegistrationKeys.QUERY)
+
+  const { data: orders } = await query.graph({
+    entity: "order",
+    fields: [
+      "id",
+      "payment_collections.*",
+      "payment_collections.payments.*",
+    ],
+    filters: { id: orderId },
+  })
+
+  const order = orders?.[0]
+  if (!order) return
 
   const paymentService: IPaymentModuleService = container.resolve(
     ModuleRegistrationName.PAYMENT
   )
 
-  const [order] = await orderService.listOrders(
-    { id: [orderId] },
-    { relations: ["payment_collections", "payment_collections.payments"] }
-  )
-
-  if (!order) return
-
   for (const collection of order.payment_collections ?? []) {
     for (const payment of (collection as any).payments ?? []) {
-      if (payment.provider_id === "pp_system_default" && payment.captured_at === null) {
+      if (
+        payment.provider_id === "pp_system_default" &&
+        !payment.captured_at
+      ) {
         await paymentService.capturePayment({ payment_id: payment.id })
       }
     }
