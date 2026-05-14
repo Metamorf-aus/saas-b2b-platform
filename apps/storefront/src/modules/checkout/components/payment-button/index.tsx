@@ -1,7 +1,7 @@
 "use client"
 
 import { isManual, isPaypal, isStripeLike } from "@/lib/constants"
-import { createCartApproval, placeOrder } from "@/lib/data/cart"
+import { createCartApproval, initiatePaymentSession, placeOrder } from "@/lib/data/cart"
 import ErrorMessage from "@/modules/checkout/components/error-message"
 import Button from "@/modules/common/components/button"
 import Spinner from "@/modules/common/icons/spinner"
@@ -111,10 +111,16 @@ const ApprovedOrderButton = ({
 
   const handleOrder = async () => {
     setSubmitting(true)
-    await completeCart(cart).catch((err) => {
+    try {
+      const hasSession = cart.payment_collection?.payment_sessions?.length ?? 0
+      if (!hasSession) {
+        await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
+      }
+      await completeCart(cart)
+    } catch (err: any) {
       setErrorMessage(err.message)
       setSubmitting(false)
-    })
+    }
   }
 
   return (
