@@ -1,17 +1,12 @@
 "use client"
 
 import { updateCart } from "@/lib/data/cart"
+import { COST_CENTRES } from "@/lib/cost-centres"
 import { B2BCart } from "@/types"
 import { clx } from "@medusajs/ui"
 import { useEffect, useState } from "react"
 
-export const COST_CENTRES = [
-  { code: "CC-101", name: "Executive & Administration", requires_approval: false },
-  { code: "CC-210", name: "Sales & Business Development", requires_approval: false },
-  { code: "CC-320", name: "Marketing & Communications", requires_approval: false },
-  { code: "CC-430", name: "Procurement & Warehouse", requires_approval: true },
-  { code: "CC-540", name: "Finance & Compliance", requires_approval: true },
-]
+export { COST_CENTRES }
 
 const CostCentreSelector = ({ cart }: { cart: B2BCart }) => {
   const saved = (cart.metadata?.cost_centre as string) ?? ""
