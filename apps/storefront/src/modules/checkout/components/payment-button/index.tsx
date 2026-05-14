@@ -61,6 +61,10 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
     return <RequestApprovalButton cart={cart} notReady={notReady} />
   }
 
+  if (requiresApproval && cartApprovalStatus === ApprovalStatusType.APPROVED) {
+    return <ApprovedOrderButton cart={cart} notReady={notReady} data-testid={dataTestId} />
+  }
+
   const paymentSession = cart.payment_collection?.payment_sessions?.[0]
 
   switch (true) {
@@ -91,6 +95,43 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
     default:
       return <Button disabled>Select a payment method</Button>
   }
+}
+
+const ApprovedOrderButton = ({
+  cart,
+  notReady,
+  "data-testid": dataTestId,
+}: {
+  cart: B2BCart
+  notReady: boolean
+  "data-testid"?: string
+}) => {
+  const [submitting, setSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const handleOrder = async () => {
+    setSubmitting(true)
+    await completeCart(cart).catch((err) => {
+      setErrorMessage(err.message)
+      setSubmitting(false)
+    })
+  }
+
+  return (
+    <>
+      <Button
+        className="w-full"
+        disabled={notReady}
+        isLoading={submitting}
+        onClick={handleOrder}
+        size="large"
+        data-testid={dataTestId}
+      >
+        Complete Order
+      </Button>
+      <ErrorMessage error={errorMessage} data-testid="approved-order-error-message" />
+    </>
+  )
 }
 
 const RequestApprovalButton = ({
