@@ -25,7 +25,7 @@ export const useQuotesTableColumns = () => {
         cell: ({ getValue }) => <TextCell text={getValue()} />,
       }),
       columnHelper.accessor("draft_order.customer.employee.company.name", {
-        header: t("fields.company"),
+        header: t("Department"),
         cell: ({ getValue }) => <TextCell text={getValue()} />,
       }),
       columnHelper.accessor("draft_order.total", {
