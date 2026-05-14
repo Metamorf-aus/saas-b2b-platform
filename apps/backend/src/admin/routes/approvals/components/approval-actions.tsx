@@ -12,7 +12,8 @@ export const ApprovalActions = ({ cart }: { cart: Record<string, any> }) => {
 
   const awaitingSalesManagerApproval = cart.approvals.find(
     (approval) =>
-      approval.type === ApprovalType.SALES_MANAGER &&
+      (approval.type === ApprovalType.SALES_MANAGER ||
+        approval.type === ApprovalType.ADMIN) &&
       approval.status === ApprovalStatusType.PENDING
   );
 
