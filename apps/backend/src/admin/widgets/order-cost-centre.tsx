@@ -9,28 +9,32 @@ const COST_CENTRES = [
   { code: "CC-540", name: "Finance & Compliance" },
 ]
 
-const OrderCostCentreWidget = ({ data }: { data: Record<string, any> }) => {
-  const code = data?.metadata?.cost_centre as string | undefined
+const OrderDepartmentWidget = ({ data }: { data: Record<string, any> }) => {
+  const department = data?.shipping_address?.company as string | undefined
+  const costCentreCode = data?.metadata?.cost_centre as string | undefined
+  const costCentre = COST_CENTRES.find((c) => c.code === costCentreCode)
 
-  if (!code) {
+  if (!department && !costCentre) {
     return null
   }
-
-  const centre = COST_CENTRES.find((c) => c.code === code)
 
   return (
     <Container className="divide-y p-0">
       <div className="flex items-center justify-between px-6 py-4">
-        <Heading level="h2">Cost Centre</Heading>
+        <Heading level="h2">Department</Heading>
       </div>
-      <div className="flex items-center justify-between px-6 py-4">
-        <Text className="text-ui-fg-subtle">Code</Text>
-        <Text>{code}</Text>
-      </div>
-      {centre && (
+
+      {department && (
         <div className="flex items-center justify-between px-6 py-4">
           <Text className="text-ui-fg-subtle">Department</Text>
-          <Text>{centre.name}</Text>
+          <Text>{department}</Text>
+        </div>
+      )}
+
+      {costCentre && (
+        <div className="flex items-center justify-between px-6 py-4">
+          <Text className="text-ui-fg-subtle">Cost Centre</Text>
+          <Text>{costCentre.code} — {costCentre.name}</Text>
         </div>
       )}
     </Container>
@@ -41,4 +45,4 @@ export const config = defineWidgetConfig({
   zone: "order.details.side.before",
 })
 
-export default OrderCostCentreWidget
+export default OrderDepartmentWidget
