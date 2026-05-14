@@ -66,18 +66,19 @@ const useAdvanceWmsStatus = () => {
           quantity: item.quantity,
         }));
 
-        const fulfillmentRes = await sdk.admin.order.createFulfillment(orderId, {
-          items,
-        } as any);
+        const fulfillmentRes = await sdk.client.fetch<any>(
+          `/admin/orders/${orderId}/fulfillments`,
+          { method: "POST", body: { items } }
+        )
 
         const fulfillmentId =
-          (fulfillmentRes as any).order?.fulfillments?.slice(-1)[0]?.id ??
-          (fulfillmentRes as any).fulfillment?.id;
+          fulfillmentRes?.order?.fulfillments?.slice(-1)[0]?.id
 
         if (fulfillmentId) {
-          await sdk.admin.order.createShipment(orderId, {
-            fulfillment_id: fulfillmentId,
-          } as any);
+          await sdk.client.fetch(
+            `/admin/fulfillments/${fulfillmentId}/shipments`,
+            { method: "POST", body: {} }
+          )
         }
       }
     },
