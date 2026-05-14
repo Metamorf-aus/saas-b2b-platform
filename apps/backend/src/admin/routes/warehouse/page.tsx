@@ -55,10 +55,31 @@ const useOrders = () => {
 const useAdvanceWmsStatus = () => {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async ({ orderId, next }: { orderId: string; next: WmsStatus }) => {
+    mutationFn: async ({ orderId, next, order }: { orderId: string; next: WmsStatus; order: any }) => {
       await (sdk.admin.order as any).update(orderId, {
         metadata: { wms_status: next },
       });
+
+      if (next === "dispatched") {
+        const items = (order.items ?? []).map((item: any) => ({
+          id: item.id,
+          quantity: item.quantity,
+        }));
+
+        const fulfillmentRes = await sdk.admin.order.createFulfillment(orderId, {
+          items,
+        } as any);
+
+        const fulfillmentId =
+          (fulfillmentRes as any).order?.fulfillments?.slice(-1)[0]?.id ??
+          (fulfillmentRes as any).fulfillment?.id;
+
+        if (fulfillmentId) {
+          await sdk.admin.order.createShipment(orderId, {
+            fulfillment_id: fulfillmentId,
+          } as any);
+        }
+      }
     },
     onSuccess: (_, { next }) => {
       qc.invalidateQueries({ queryKey: ["wms-orders"] });
@@ -108,7 +129,7 @@ const OrderCard = ({ order }: { order: any }) => {
           size="small"
           variant="secondary"
           isLoading={isPending}
-          onClick={() => mutate({ orderId: order.id, next })}
+          onClick={() => mutate({ orderId: order.id, next, order })}
         >
           {NEXT_ACTION[wmsStatus]}
         </Button>
