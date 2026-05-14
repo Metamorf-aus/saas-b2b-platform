@@ -37,7 +37,6 @@ const OrderDetails = ({ order }: OrderDetailsProps) => {
             <Text>Cost Centre</Text>
             <Text>
               {costCentre.code} — {costCentre.name}
-              {costCentre.requires_approval ? " ⏳ Pending approval" : ""}
             </Text>
           </div>
         )}
