@@ -10,26 +10,18 @@ const COST_CENTRES = [
 ]
 
 const OrderDepartmentWidget = ({ data }: { data: Record<string, any> }) => {
-  const department = data?.shipping_address?.company as string | undefined
   const costCentreCode = data?.metadata?.cost_centre as string | undefined
   const costCentre = COST_CENTRES.find((c) => c.code === costCentreCode)
 
-  if (!department && !costCentre) {
+  if (!costCentre) {
     return null
   }
 
   return (
     <Container className="divide-y p-0">
       <div className="flex items-center justify-between px-6 py-4">
-        <Heading level="h2">Department</Heading>
+        <Heading level="h2">Cost Centre</Heading>
       </div>
-
-      {department && (
-        <div className="flex items-center justify-between px-6 py-4">
-          <Text className="text-ui-fg-subtle">Department</Text>
-          <Text>{department}</Text>
-        </div>
-      )}
 
       {costCentre && (
         <div className="flex items-center justify-between px-6 py-4">
