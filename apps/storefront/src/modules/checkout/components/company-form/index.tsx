@@ -1,5 +1,6 @@
 "use client"
 
+import { updateCart } from "@/lib/data/cart"
 import { getCartApprovalStatus } from "@/lib/util/get-cart-approval-status"
 import Divider from "@/modules/common/components/divider"
 import Radio from "@/modules/common/components/radio"
@@ -9,7 +10,14 @@ import { clx } from "@medusajs/ui"
 import { useState } from "react"
 
 const CompanyForm = ({ cart }: { cart: B2BCart }) => {
-  const [selectedOption, setSelectedOption] = useState("company")
+  const saved = (cart.metadata?.checkout_type as string) ?? "company"
+  const [selectedOption, setSelectedOption] = useState(saved)
+
+  const handleChange = (value: string) => {
+    if (isPendingApproval) return
+    setSelectedOption(value)
+    updateCart({ metadata: { ...cart.metadata, checkout_type: value } })
+  }
 
   const { isPendingAdminApproval, isPendingSalesManagerApproval } =
     getCartApprovalStatus(cart)
@@ -25,9 +33,7 @@ const CompanyForm = ({ cart }: { cart: B2BCart }) => {
     <div>
       <RadioGroup
         value={selectedOption}
-        onChange={(value) => {
-          !isPendingApproval && setSelectedOption(value)
-        }}
+        onChange={handleChange}
         className="flex flex-col gap-y-2"
       >
         <RadioGroup.Option value="company">
@@ -52,9 +58,6 @@ const CompanyForm = ({ cart }: { cart: B2BCart }) => {
               "flex items-center gap-x-4 text-sm text-neutral-600 cursor-pointer",
               isPendingApproval && "opacity-50 cursor-default"
             )}
-            onClick={() => {
-              !isPendingApproval && setSelectedOption("custom")
-            }}
           >
             <Radio
               checked={selectedOption === "custom"}
