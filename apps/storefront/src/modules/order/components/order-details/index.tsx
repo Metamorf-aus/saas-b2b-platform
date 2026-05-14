@@ -1,4 +1,4 @@
-import { COST_CENTRES } from "@/modules/checkout/components/cost-centre-selector"
+import { COST_CENTRES } from "@/lib/cost-centres"
 import { HttpTypes } from "@medusajs/types"
 import { Heading, Text } from "@medusajs/ui"
 
