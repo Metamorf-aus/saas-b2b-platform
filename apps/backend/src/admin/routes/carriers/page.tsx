@@ -1,7 +1,7 @@
 "use client"
 
 import { defineRouteConfig } from "@medusajs/admin-sdk"
-import { Truck } from "@medusajs/icons"
+import { DocumentText } from "@medusajs/icons"
 import {
   Button,
   Container,
@@ -139,7 +139,7 @@ const CarriersPage = () => {
 
 export const config = defineRouteConfig({
   label: "Carriers",
-  icon: Truck,
+  icon: DocumentText,
 })
 
 export default CarriersPage
