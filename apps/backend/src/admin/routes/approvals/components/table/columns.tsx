@@ -27,6 +27,13 @@ export const useApprovalsTableColumns = () => {
         header: t("fields.company"),
         cell: ({ getValue }) => <TextCell text={getValue()} />,
       }),
+      columnHelper.accessor("metadata", {
+        header: t("Cost Centre"),
+        cell: ({ getValue }) => {
+          const cc = (getValue() as any)?.cost_centre as string | undefined
+          return <TextCell text={cc ?? "—"} />
+        },
+      }),
       columnHelper.accessor("approval_status.status", {
         header: t("fields.status"),
         cell: ({ getValue }) => {
