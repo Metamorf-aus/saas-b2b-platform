@@ -1,5 +1,5 @@
 import LocalizedClientLink from "@/modules/common/components/localized-client-link"
-import LogoIcon from "@/modules/common/icons/logo"
+import Image from "next/image"
 
 export default function CheckoutLayout({
   children,
@@ -11,10 +11,14 @@ export default function CheckoutLayout({
       <div className="h-16 bg-white">
         <nav className="flex h-full items-center content-container justify-between">
           <LocalizedClientLink className="hover:text-ui-fg-base" href="/">
-            <h1 className="text-base font-medium flex items-center">
-              <LogoIcon className="inline mr-2" />
-              Precision B2B
-            </h1>
+            <Image
+              src="/logo.png"
+              alt="Precision"
+              width={140}
+              height={33}
+              priority
+              className="h-7 small:h-8 w-auto"
+            />
           </LocalizedClientLink>
         </nav>
       </div>
